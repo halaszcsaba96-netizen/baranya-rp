@@ -1,0 +1,656 @@
+```html
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Baranya RP | Emergency Hamburg</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #080b12;
+    color: white;
+}
+
+/* ===== NAVIGÁCIÓ ===== */
+
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(8, 11, 18, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #222938;
+    padding: 16px 25px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.logo span {
+    color: #5865F2;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+nav a {
+    color: #d8dbe3;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+nav a:hover {
+    color: #5865F2;
+}
+
+/* ===== FŐOLDAL ===== */
+
+.hero {
+    min-height: 90vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    padding: 40px 20px;
+
+    background:
+        radial-gradient(circle at center, #172554 0%, #080b12 65%);
+}
+
+.hero-content {
+    max-width: 850px;
+}
+
+.badge {
+    display: inline-block;
+    background: rgba(88, 101, 242, 0.15);
+    border: 1px solid #5865F2;
+    color: #8d96ff;
+
+    padding: 8px 16px;
+    border-radius: 30px;
+
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    font-size: clamp(50px, 8vw, 90px);
+    margin-bottom: 15px;
+    letter-spacing: 3px;
+}
+
+.hero h1 span {
+    color: #5865F2;
+}
+
+.hero p {
+    font-size: 21px;
+    color: #b9bfcc;
+    line-height: 1.6;
+}
+
+.buttons {
+    margin-top: 35px;
+}
+
+.btn {
+    display: inline-block;
+
+    padding: 15px 28px;
+    margin: 7px;
+
+    border-radius: 10px;
+
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 17px;
+
+    transition: 0.25s;
+}
+
+.discord-btn {
+    background: #5865F2;
+    color: white;
+}
+
+.discord-btn:hover {
+    background: #4752c4;
+    transform: translateY(-3px);
+}
+
+.info-btn {
+    background: transparent;
+    border: 1px solid #394150;
+    color: white;
+}
+
+.info-btn:hover {
+    background: #171c27;
+}
+
+/* ===== SZEKCIÓK ===== */
+
+section {
+    max-width: 1100px;
+    margin: auto;
+    padding: 90px 25px;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title h2 {
+    font-size: 40px;
+    margin-bottom: 12px;
+}
+
+.section-title p {
+    color: #9299a8;
+    font-size: 17px;
+}
+
+/* ===== KÁRTYÁK ===== */
+
+.cards {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(220px, 1fr));
+
+    gap: 20px;
+}
+
+.card {
+    background: #111621;
+
+    border: 1px solid #222938;
+
+    border-radius: 15px;
+
+    padding: 30px;
+
+    transition: 0.25s;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    border-color: #5865F2;
+}
+
+.card-icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    font-size: 22px;
+    margin-bottom: 12px;
+}
+
+.card p {
+    color: #9ba2b1;
+    line-height: 1.6;
+}
+
+/* ===== RÓLUNK ===== */
+
+.about {
+    text-align: center;
+    max-width: 800px;
+    margin: auto;
+}
+
+.about p {
+    color: #b1b7c3;
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+/* ===== TÁMOGATÁS ===== */
+
+.support {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(88,101,242,0.12),
+            rgba(17,22,33,0.8)
+        );
+
+    border: 1px solid #29304a;
+    border-radius: 20px;
+
+    padding: 50px 30px;
+
+    text-align: center;
+}
+
+.support h2 {
+    font-size: 38px;
+    margin-bottom: 15px;
+}
+
+.support p {
+    color: #aeb5c3;
+    line-height: 1.7;
+    max-width: 700px;
+    margin: auto;
+}
+
+/* ===== DISCORD ===== */
+
+.discord-box {
+    text-align: center;
+
+    background: #111621;
+
+    border: 1px solid #222938;
+
+    border-radius: 20px;
+
+    padding: 60px 25px;
+}
+
+.discord-box h2 {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.discord-box p {
+    color: #aeb5c3;
+    margin-bottom: 20px;
+}
+
+/* ===== FOOTER ===== */
+
+footer {
+    border-top: 1px solid #222938;
+
+    background: #05070b;
+
+    text-align: center;
+
+    padding: 35px 20px;
+
+    color: #737b8a;
+}
+
+footer strong {
+    color: white;
+}
+
+/* ===== MOBIL ===== */
+
+@media (max-width: 700px) {
+
+    nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav ul {
+        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero {
+        min-height: 80vh;
+    }
+
+    .hero p {
+        font-size: 17px;
+    }
+
+    section {
+        padding: 65px 20px;
+    }
+
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- ===== NAVIGÁCIÓ ===== -->
+
+<nav>
+
+    <div class="logo">
+        BARANYA <span>RP</span>
+    </div>
+
+    <ul>
+        <li>
+            <a href="#rolunk">Rólunk</a>
+        </li>
+
+        <li>
+            <a href="#frakciok">Frakciók</a>
+        </li>
+
+        <li>
+            <a href="#tamogatas">Támogatás</a>
+        </li>
+
+        <li>
+            <a href="#discord">Discord</a>
+        </li>
+    </ul>
+
+</nav>
+
+
+<!-- ===== FŐOLDAL ===== -->
+
+<header class="hero">
+
+    <div class="hero-content">
+
+        <div class="badge">
+            🇭🇺 Magyar Emergency Hamburg RP
+        </div>
+
+        <h1>
+            BARANYA <span>RP</span>
+        </h1>
+
+        <p>
+            Egy aktív magyar Emergency Hamburg
+            szerepjátékos közösség.
+            Csatlakozz hozzánk és alakítsd velünk
+            a saját történetedet!
+        </p>
+
+        <div class="buttons">
+
+            <a
+                class="btn discord-btn"
+                href="https://discord.gg/t5vFxJddJ"
+                target="_blank"
+            >
+                💬 Discord csatlakozás
+            </a>
+
+            <a
+                class="btn info-btn"
+                href="#rolunk"
+            >
+                ℹ️ Több információ
+            </a>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- ===== RÓLUNK ===== -->
+
+<section id="rolunk">
+
+    <div class="section-title">
+
+        <h2>Rólunk</h2>
+
+        <p>
+            Ismerd meg a Baranya RP közösséget
+        </p>
+
+    </div>
+
+    <div class="about">
+
+        <p>
+            Üdvözlünk a Baranya RP hivatalos oldalán!
+            Közösségünk célja egy szórakoztató,
+            aktív és élvezhető magyar Emergency Hamburg
+            RP környezet létrehozása.
+        </p>
+
+        <br>
+
+        <p>
+            Legyél rendőr, mentős, tűzoltó vagy egyszerű
+            civil – nálunk minden játékosnak lehetősége
+            van saját történetet létrehozni.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ===== FRAKCIÓK ===== -->
+
+<section id="frakciok">
+
+    <div class="section-title">
+
+        <h2>🚨 Frakciók</h2>
+
+        <p>
+            Válaszd ki a neked megfelelő szerepet
+        </p>
+
+    </div>
+
+
+    <div class="cards">
+
+        <div class="card">
+
+            <div class="card-icon">
+                🚓
+            </div>
+
+            <h3>Rendőrség</h3>
+
+            <p>
+                Járőrözés, intézkedések,
+                közúti ellenőrzések és
+                különböző rendőrségi RP-k.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-icon">
+                🚑
+            </div>
+
+            <h3>Mentőszolgálat</h3>
+
+            <p>
+                Segíts a sérülteken,
+                vegyél részt mentésekben
+                és sürgősségi esetekben.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-icon">
+                🚒
+            </div>
+
+            <h3>Tűzoltóság</h3>
+
+            <p>
+                Tűzesetek, balesetek,
+                mentések és különleges
+                sürgősségi események.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-icon">
+                🚗
+            </div>
+
+            <h3>Civil</h3>
+
+            <p>
+                Éld a saját életed,
+                dolgozz, közlekedj és
+                alakítsd a saját történetedet.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ===== TÁMOGATÁS ===== -->
+
+<section id="tamogatas">
+
+    <div class="support">
+
+        <h2>
+            🎁 Támogatói bónuszok
+        </h2>
+
+        <p>
+            Szeretnéd támogatni a Baranya RP közösséget?
+            A támogatók számára különböző közösségi
+            bónuszokat és különleges Discord szerepköröket
+            biztosíthatunk.
+        </p>
+
+        <div class="cards" style="margin-top:35px;">
+
+            <div class="card">
+
+                <div class="card-icon">
+                    ⭐
+                </div>
+
+                <h3>Támogatói rang</h3>
+
+                <p>
+                    Különleges Discord szerepkör
+                    a támogatóknak.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-icon">
+                    🎁
+                </div>
+
+                <h3>Extra bónuszok</h3>
+
+                <p>
+                    Különleges közösségi lehetőségek
+                    és események.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-icon">
+                    💙
+                </div>
+
+                <h3>Közösségtámogatás</h3>
+
+                <p>
+                    Támogatásoddal hozzájárulsz
+                    a közösség fejlődéséhez.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ===== DISCORD ===== -->
+
+<section id="discord">
+
+    <div class="discord-box">
+
+        <h2>
+            💬 Csatlakozz hozzánk!
+        </h2>
+
+        <p>
+            Lépj be a Baranya RP Discord szerverére
+            és csatlakozz a közösséghez!
+        </p>
+
+        <a
+            class="btn discord-btn"
+            href="https://discord.gg/t5vFxJddJ"
+            target="_blank"
+        >
+            🚀 Discord megnyitása
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ===== FOOTER ===== -->
+
+<footer>
+
+    <p>
+        © 2026 <strong>Baranya RP</strong>
+    </p>
+
+    <p style="margin-top:8px;">
+        Emergency Hamburg magyar RP közösség
+    </p>
+
+</footer>
+
+</body>
+</html>
+```
